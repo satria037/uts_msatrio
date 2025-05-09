@@ -1,80 +1,120 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+void main() => runApp(const WeatherApp());
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class WeatherApp extends StatelessWidget {
+  const WeatherApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'UTS Mobile Programming',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(title: 'UTS Mobile Programming'),
+      debugShowCheckedModeBanner: false,
+      home: const WeatherScreen(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+class WeatherScreen extends StatelessWidget {
+  const WeatherScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'Anda telah menekan tombol sebanyak:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: _incrementCounter,
-              child: const Text('Tambah Counter'),
-            ),
-            const SizedBox(height: 20),
-            const Card(
-              child: Padding(
-                padding: EdgeInsets.all(16.0),
-                child: Text('Ini adalah contoh card widget'),
-              ),
-            ),
-          ],
+      body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/sunset_bg.jpg'),
+            fit: BoxFit.cover,
+          ),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'Harlem',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 32,
+                  fontWeight: FontWeight.bold,
+                  shadows: [
+                    Shadow(
+                      blurRadius: 10.0,
+                      color: Colors.black54,
+                      offset: Offset(2.0, 2.0),
+                    ),
+                  ],
+                ),
+              ),
+              Text(
+                'Tuesday, January 10, 2019',
+                style: TextStyle(
+                  color: Colors.white.withOpacity(0.9),
+                  fontSize: 16,
+                  shadows: [
+                  Shadow(
+                  blurRadius: 5.0,
+                  color: Colors.black54,
+                  offset: Offset(1.0, 1.0),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 40),
+              Text(
+                '15°C',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 80,
+                  fontWeight: FontWeight.bold,
+                  shadows: [
+                    Shadow(
+                      blurRadius: 15.0,
+                      color: Colors.black54,
+                      offset: Offset(3.0, 3.0),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 10),
+              Container(
+                width: 100,
+                child: Divider(
+                  color: Colors.white.withOpacity(0.7),
+                  thickness: 1,
+                ),
+              ),
+              const SizedBox(height: 20),
+              Text(
+                'Cloudy',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 22,
+                  fontWeight: FontWeight.w500,
+                  shadows: [
+                  Shadow(
+                  blurRadius: 8.0,
+                  color: Colors.black54,
+                  offset: Offset(2.0, 2.0),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 10),
+              Text(
+                '25°C / 28°C',
+                style: TextStyle(
+                  color: Colors.white.withOpacity(0.9),
+                  fontSize: 18,
+                  shadows: [
+                  Shadow(
+                  blurRadius: 5.0,
+                  color: Colors.black54,
+                  offset: Offset(1.0, 1.0),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
